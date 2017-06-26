@@ -52,6 +52,10 @@
                         points.push( e("li", {key: 'points-4'}, "Because React tries hard to only re-render parts of the DOM that have changed"))
                     }
 
+                    if ( this.state.point_number >= 5 ) {
+                        points.push( e("li", {key: "points-5"}, "The focus is on Components. All display and business logic lives together inside component"))
+                    }
+
                     return points
 
                 }
