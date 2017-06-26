@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Welcome to Exploring React</title>
+        <script src='https://unpkg.com/react@15.6.1/dist/react.js'></script>
+        <script src='https://unpkg.com/react-dom@15.6.1/dist/react-dom.js'></script>
+
+
+        <style>body {font-size: 300%}</style>
+    </head>
+    <body>
+        <h1>Exploring React: Slide Three</h1>
+        <div id="app">
+
+        </div>
+
+        <script>
+            const e = React.createElement
+
+            class InnerComponent extends  React.Component {
+              constructor( props ) {
+                  super(props)
+                  this.font_color = props.font_color
+              }
+              
+              
+              componentWillReceiveProps( nextProps ) {
+                this.font_color = nextProps.font_color || this.font_color
+              } 
+              
+                           
+              render() {
+                return e( "h1", {
+                  style: {color: this.font_color}, 
+                  onClick: () => { this.props.callback("one way data flow") },
+                  key: 'change'},
+                  "CHANGING!" )
+              }
+            }
+            
+            
+            // "type safe" property checking. Enabled for development ONLY
+            // also slightly deprecated way to do this....
+            InnerComponent.propTypes = {
+              font_color: React.PropTypes.string.isRequired,
+              callback: React.PropTypes.func.isRequired
+            }
+            
+            
+            class OuterComponent extends React.Component {
+                constructor( props ) {
+                    super(props)
+                    this.colors = ["black", "red", "rebeccapurple", "yellow", "green"]
+                    this.state = {color_number: 0}
+                }
+
+
+                nextSlide(e) {
+                    location.href="slide_four.html"
+                }
+
+
+                nextColor() {
+                    let current_color_number = this.state.color_number
+                    if ( current_color_number < this.colors.length -1 ) {
+                      current_color_number = current_color_number + 1
+                    }
+                    this.setState( {color_number: current_color_number} )
+                }
+
+                callback(value) {
+                  alert( `From the InnerComponent: ${value}`)
+                }
+                
+                
+                render() {
+                    return e("div", null, [
+                        e( InnerComponent, { 
+                          font_color: this.colors[this.state.color_number], 
+                          callback: this.callback.bind(this),
+                          key: 'inner' } ),
+                        e("button", { key: 'next_color', onClick: this.nextColor.bind(this) }, "<->"),
+                        e("hr"  ),
+                        e('button', { onClick: this.nextSlide.bind(this), key: 'next' }, 'Advance')
+                    ] )
+                }
+            }
+
+            ReactDOM.render( e(OuterComponent), document.getElementById("app") )
+        </script>
+    </body>
+</html>
