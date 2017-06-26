@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Welcome to Exploring React</title>
+        <script src='https://unpkg.com/react@15.6.1/dist/react.js'></script>
+        <script src='https://unpkg.com/react-dom@15.6.1/dist/react-dom.js'></script>
+
+        <style>body {font-size: 300%}</style>
+
+
+    </head>
+    <body>
+        <h1>Exploring React: Slide One</h1>
+        <div id="app">
+
+        </div>
+
+        <script>
+            const e = React.createElement
+
+            // yes, you better be running an evergreen browser for this...
+            class FirstComponent extends React.Component {
+                helloWorld(e) {
+                    alert("hello world")
+                    location.href="slide_two.html"
+                }
+
+                render() {
+                    return e('button', { onClick: this.helloWorld.bind(this) }, 'Advance')
+                }
+            }
+
+            ReactDOM.render( e(FirstComponent), document.getElementById("app") )
+        </script>
+    </body>
+</html>

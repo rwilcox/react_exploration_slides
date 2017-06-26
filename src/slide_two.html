@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Welcome to Exploring React</title>
+        <script src='https://unpkg.com/react@15.6.1/dist/react.js'></script>
+        <script src='https://unpkg.com/react-dom@15.6.1/dist/react-dom.js'></script>
+
+
+        <style>body {font-size: 300%}</style>
+    </head>
+    <body>
+        <h1>Exploring React: Slide Two</h1>
+        <div id="app">
+
+        </div>
+
+        <script>
+            const e = React.createElement
+
+            class SecondComponent extends React.Component {
+                constructor( props ) {
+                    super(props)
+                    this.state = {}
+                    this.state.point_number = 1
+                }
+
+
+                nextSlide(e) {
+                    location.href="slide_three.html"
+                }
+
+
+                nextPoint() {
+                    this.setState( { point_number: this.state.point_number + 1} )
+                }
+
+
+                renderPoints() {
+                    let points = []
+                    if ( this.state.point_number  >= 1 ) {
+                        points.push( e("li", { key: "points-1"}, "React is... reactive"))
+                    }
+
+                    if (this.state.point_number >= 2 ) {
+                        points.push( e("li", {key: "points-2"}, "It is ONLY a view layer") )
+                    }
+
+                    if (this.state.point_number >= 3 ) {
+                        points.push( e("li", {key: 'points-3'}, "State Management is essential"))
+                    }
+
+                    if ( this.state.point_number >= 4 ) {
+                        points.push( e("li", {key: 'points-4'}, "Because React tries hard to only re-render parts of the DOM that have changed"))
+                    }
+
+                    return points
+
+                }
+
+
+                render() {
+                    return e("div", null, [
+                        e("ul", { key: 'point-list'}, this.renderPoints()),
+                        e("button", { key: 'nextPoint', onClick: this.nextPoint.bind(this) }, "+"),
+                        e("hr"  ),
+                        e('button', { onClick: this.nextSlide.bind(this), key: 'next' }, 'Advance')
+                    ] )
+                }
+            }
+
+            ReactDOM.render( e(SecondComponent), document.getElementById("app") )
+        </script>
+    </body>
+</html>
