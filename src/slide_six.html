@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <meta charset="UTF-8" />
+        <title>Welcome to Exploring React</title>
+        <script src='https://unpkg.com/react@15.6.1/dist/react.js'></script>
+        <script src='https://unpkg.com/react-dom@15.6.1/dist/react-dom.js'></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+        <style>body {font-size: 300%}</style>
+
+
+    </head>
+    <body>
+        <h1>Exploring React: Slide Five</h1>
+        <div id="app">
+
+        </div>
+
+        <script type="text/babel">
+            class FirstComponent extends React.Component {
+                constructor(props) {
+                  super(props)
+                  this.state = { point_number: 1 }
+                }
+                
+                nextPoint() {
+                  this.setState( {point_number: this.state.point_number + 1} )
+                }
+                
+                
+                helloWorld(e) {
+                    location.href="http://localhost:8001"
+                }
+
+                render() {
+                    return <div>
+                      <h2>A brief introduction to Redux</h2>
+                      <ul>
+                        { this.state.point_number >= 1 ? <li>Redux: state management for your whole app</li> : <span /> }
+                        { this.state.point_number >= 2 ? <li>Centralizes data store</li> : <span /> }
+                        { this.state.point_number >= 3 ? <li>... yes, you read that right</li> : <span /> }
+                        { this.state.point_number >= 4 ? <li>Components register what fields they are interested in the <span style={{textDecoration: 'line-through'}}>global hash</span>data store</li> : <span /> }
+                        { this.state.point_number >= 5 ? <li>On change to that field Redux will update props (re-render) </li> : <span /> }
+                        { this.state.point_number >= 6 ? <li>Terms: Actions ...</li> : <span /> }
+                        { this.state.point_number >= 7 ? <li>Terms: Reducers ...</li> : <span /> }
+                        { this.state.point_number >= 8 ? <li>Supporting Libraries: Redux Saga, Redux Thunk ...</li> : <span /> }
+                      </ul>
+                      { this.state.point_number >= 9 ? <img src="redux_lifecycle.png" /> : <span />}
+                      <button onClick={this.nextPoint.bind(this)}>+</button>
+                      <hr />
+                      <button onClick={ this.helloWorld.bind(this) }>Advance</button>
+                    </div>
+                }
+            }
+            
+            ReactDOM.render( <FirstComponent />, document.getElementById("app") )
+        </script>
+    </body>
+</html>
