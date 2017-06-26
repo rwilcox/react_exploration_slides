@@ -17,6 +17,7 @@
             const e = React.createElement
 
             class InnerComponent extends  React.Component {
+              // COMMENT : stateless
               constructor( props ) {
                   super(props)
                   this.font_color = props.font_color
@@ -30,7 +31,7 @@
                            
               render() {
                 return e( "h1", {
-                  style: {color: this.font_color}, 
+                  style: {color: this.font_color}, // COMMENT : a record
                   onClick: () => { this.props.callback("one way data flow") },
                   key: 'change'},
                   "CHANGING!" )
@@ -75,7 +76,7 @@
                 render() {
                     return e("div", null, [
                         e( InnerComponent, { 
-                          font_color: this.colors[this.state.color_number], 
+                          font_color: this.colors[this.state.color_number], // COMMENT : prop, re-render
                           callback: this.callback.bind(this),
                           key: 'inner' } ),
                         e("button", { key: 'next_color', onClick: this.nextColor.bind(this) }, "<->"),

@@ -18,6 +18,7 @@
 
         </div>
 
+        <!-- COMMENT -->
         <script type="text/babel">
             class FirstComponent extends React.Component {
                 helloWorld(e) {
@@ -32,7 +33,12 @@
                         <li>React: tools on top of tools on top of tools on top...</li>
                         <li><a href="https://www.youtube.com/watch?v=IWINtUCshxY">I'm funny how? Funny like I'm a clown?</a></li>
                       </ul>
-                      <button onClick={ this.helloWorld.bind(this) }>JSX In Action (Advance)</button>
+                      <button onClick={ this.helloWorld.bind(this) }>Advance</button>
+                      {/* COMMENT : {} embeds JS in JSX */ }
+                      { /* COMMENT : yes, this is how you do comments. See why I was sad for 6 months? */ }
+                      { /* COMMENT : show Quick Source Viewer version of this page 
+                        https://chrome.google.com/webstore/detail/quick-source-viewer/cfmcghennfbpmhemnnfjhkdmnbidpanb?hl=en-US
+                        */ }
                     </div>
                 }
             }

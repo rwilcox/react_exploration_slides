@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>Exploring React: Slide One</h1>
-        <div id="app">
+        <div id="app"> <!-- COMMENT -->
 
         </div>
 
@@ -25,11 +25,14 @@
                 }
 
                 render() {
+                    // COMMENT
                     return e('button', { onClick: this.helloWorld.bind(this) }, 'Advance')
                 }
             }
 
+            // COMMENT
             ReactDOM.render( e(FirstComponent), document.getElementById("app") )
+            // COMMENT : react good for server rendered pages, totally dynamic pages (FB + ESPN = same problem!!)
         </script>
     </body>
 </html>

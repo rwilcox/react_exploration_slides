@@ -30,6 +30,7 @@
 
 
                 nextPoint() {
+                    // COMMENT
                     this.setState( { point_number: this.state.point_number + 1} )
                 }
 
@@ -64,7 +65,7 @@
                 render() {
                     return e("div", null, [
                         e("ul", { key: 'point-list'}, this.renderPoints()),
-                        e("button", { key: 'nextPoint', onClick: this.nextPoint.bind(this) }, "+"),
+                        e("button", { key: 'nextPoint', onClick: this.nextPoint.bind(this) }, "+"), // COMMENT : method.bind
                         e("hr"  ),
                         e('button', { onClick: this.nextSlide.bind(this), key: 'next' }, 'Advance')
                     ] )
