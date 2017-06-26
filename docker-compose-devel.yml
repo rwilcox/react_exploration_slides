@@ -9,3 +9,13 @@ services:
       dockerfile: docker/nginx/Dockerfile.devel
       context: .
 
+  node:
+    ports:
+      - '8001:3000'
+    volumes:
+      - ./src:/app
+    command: tail -f /dev/null 
+    build:
+      dockerfile: docker/node/Dockerfile.devel
+      context: .
+
