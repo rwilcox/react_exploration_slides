@@ -37,19 +37,19 @@
                 renderPoints() {
                     let points = []
                     if ( this.state.point_number  >= 1 ) {
-                        points.push( e("li", { key: "points-1"}, "React is... reactive"))
-                    }
-
-                    if (this.state.point_number >= 2 ) {
                         points.push( e("li", {key: "points-2"}, "It is ONLY a view layer") )
                     }
 
+                    if (this.state.point_number >= 2 ) {
+                        points.push( e("li", {key: 'points-3'}, "State Management is essential"))              
+                    }
+
                     if (this.state.point_number >= 3 ) {
-                        points.push( e("li", {key: 'points-3'}, "State Management is essential"))
+                        points.push( e("li", { key: "points-1"}, "React is... reactive"))
                     }
 
                     if ( this.state.point_number >= 4 ) {
-                        points.push( e("li", {key: 'points-4'}, "Because React tries hard to only re-render parts of the DOM that have changed"))
+                        points.push( e("li", {key: 'points-4'}, "React tries hard to only re-render parts of the DOM that have changed"))
                     }
 
                     if ( this.state.point_number >= 5 ) {
